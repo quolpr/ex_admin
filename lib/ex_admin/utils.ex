@@ -45,7 +45,7 @@ defmodule ExAdmin.Utils do
 
   @doc false
   def resource_name(item) do
-    item |> base_name |> Inflex.underscore |> String.to_atom
+    item |> ExAdmin.Helpers.model_name |> String.to_atom
   end
 
   @doc """
