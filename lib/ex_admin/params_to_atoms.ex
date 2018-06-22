@@ -49,7 +49,7 @@ defmodule ExAdmin.ParamsToAtoms do
   end
   defp _replace_integers(key, value) when is_binary(key) do
     if Regex.match?(@integer_keys, key) do
-      case {Regex.match?(~r/^[0-9]+$/, value), value} do
+      case {Regex.match?(~r/^[0-9]+$/, value || ""), value} do
         {false, ""} -> {key, nil}
         {true, _} -> {key, String.to_integer(value)}
         _ -> {key, value}
